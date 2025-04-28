@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.pos.karyawan.EmployeeController"
+            style="-fx-background-color: #121212;">
+
+    <!-- Top Search Bar -->
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #1E1E1E; -fx-padding: 15;">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Employee Management" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #E0E0E0;"/>
+                <Rectangle width="20" height="1" fill="transparent"/>
+                <Button fx:id="addEmployeeBtn" text="Add Employee"
+                        style="-fx-background-color: #6200EE; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15; -fx-background-radius: 4;"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search employees..."
+                           style="-fx-pref-width: 400px; -fx-background-color: #121212; -fx-text-fill: #E0E0E0; -fx-background-radius: 4; -fx-padding: 8; -fx-border-color: #3D3D3D; -fx-border-radius: 4;"/>
+                <Button fx:id="searchBtn" text="Search"
+                        style="-fx-background-color: #121212; -fx-text-fill: #E0E0E0; -fx-font-weight: bold; -fx-padding: 8 20; -fx-background-radius: 4;-fx-border-color: #3D3D3D; -fx-border-radius: 4;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TabPane>
+                <Tab text="Employees"  closable="false" style="-fx-font-family: Helvetica; -fx-font-weight: bold; -fx-padding: 8 15; -fx-background-radius: 4;">
+                    <VBox spacing="10">
+                        <TableView fx:id="employeeTable" style="-fx-pref-height: 400px; -fx-background-color: transparent;">
+                            <columns>
+                                <TableColumn text="ID" prefWidth="80">
+                                    <cellValueFactory><PropertyValueFactory property="id"/></cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="Name" prefWidth="150">
+                                    <cellValueFactory><PropertyValueFactory property="name"/></cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="Position" prefWidth="150">
+                                    <cellValueFactory><PropertyValueFactory property="position"/></cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="Salary" prefWidth="100">
+                                    <cellValueFactory><PropertyValueFactory property="salary"/></cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="Actions" prefWidth="120">
+                                    <cellValueFactory><PropertyValueFactory property="dummy"/></cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <Tab text="Log"  closable="false" style="-fx-font-family: Helvetica; -fx-font-weight: bold; -fx-padding: 8 15; -fx-background-radius: 4;">
+                    <TableView fx:id="logTable" style="-fx-pref-height: 400px; -fx-background-color: transparent;">
+                        <columns>
+                            <TableColumn text="User" prefWidth="150">
+                                <cellValueFactory><PropertyValueFactory property="user"/></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Action" prefWidth="200">
+                                <cellValueFactory><PropertyValueFactory property="action"/></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Timestamp" prefWidth="150">
+                                <cellValueFactory><PropertyValueFactory property="timestamp"/></cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+</BorderPane>
